@@ -1,12 +1,11 @@
-const express = require("express");
+const express = require('express')
 const ditto = require('./pokemon/ditto.json')
 
+const app = express() // Create an Express application
+app.disabled('x-powered-by') // Disable the 'X-Powered-By' header for security reasons
+const PORT = process.env.PORT || 3000 // Define the port number
 
-const app = express(); // Create an Express application
-app.disabled("x-powered-by"); // Disable the 'X-Powered-By' header for security reasons
-const PORT = process.env.PORT ?? 3000; // Define the port number
-
-app.use(express.json()); // Middleware to parse JSON request bodies
+app.use(express.json()) // Middleware to parse JSON request bodies
 
 // Middleware example manually
 
@@ -32,28 +31,19 @@ app.use(express.json()); // Middleware to parse JSON request bodies
 
 // Routing
 
-app.get("/pokemon/ditto", (req, res) => {
-    res.status(200).send(ditto); 
+app.get('/pokemon/ditto', (req, res) => {
+  res.status(200).send(ditto)
 })
 
-
-app.post("/pokemon", (req, res) => {
-    res.status(201).json(req.body); 
+app.post('/pokemon', (req, res) => {
+  res.status(201).json(req.body)
 })
 
-
-
-//handle 404 Not Found
+// handle 404 Not Found
 app.use((req, res) => {
-    res.status(404).send("<h1>404 Not Found</h1>"); // Handle 404 Not Found
-});
-
-
-
-
-
-
+  res.status(404).send('<h1>404 Not Found</h1>') // Handle 404 Not Found
+})
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+  console.log(`Server is running on port ${PORT}`)
+})

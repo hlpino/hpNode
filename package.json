@@ -21,14 +21,9 @@
     "standart": "6.1.0"
   },
   "eslintConfig": {
-    "extends": "standard",
-    "env": {
-      "es2022": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2022,
-      "sourceType": "module"
-    }
+    "extends": "standard"
+  },
+  "dependencies": {
+    "express": "5.1.0"
   }
 }
